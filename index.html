@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> crystal collector game</title>
+
+ <style type="text/css">
+
+   body{
+
+     background-image: url("images/5.jfif");
+     background-repeat: no-repeat;
+     background-size: 100%;
+   }
+
+h1 {
+  color: #7e9e8d;
+  font-size: 40px;
+  text-align: center;
+}
+
+#result{
+
+  background-color: #337a55;
+  margin-right: 85%;
+  font-size: 20px;
+}
+   
+  </style>
+
+</head>
+<body>
+      
+      <div id="result">
+        <p>Wins:0</p>
+        <p>Losses:0</p>
+       
+      </div>
+          
+          
+           
+           <h1>Crystal collector<span id="number-to-guess"></span></h1>
+
+
+      <div class="container">
+
+          <div class="row" style="margin: 10%; margin-right: 100px;">
+
+            <div class="col-lg-4">
+
+                    <div style=" width: 12%; float:left; margin:15px; margin-left: 180px;">
+                       
+                     <button id="button-1"> <img src="images/1.jfif"  style="width:120px;height:120px;"> </button>
+                    </div>
+                 
+                    <div style=" width: 12%; float:left; margin:15px; ">
+                       
+                       <button id="button-2"><img src="images/2.jfif" style="width:120px;height:120px;"></button>
+                    </div>
+            
+                    
+                    <div style=" width: 12%; float:left; margin:15px;">
+                       
+                      <button id="button-3"> <img src="images/3.jpg" style="width:120px;height:120px;"></button>
+                    </div>
+                 
+                    <div style="width: 12%; float:left; margin:15px;">
+                       
+                     <button id="button-4"><img src="images/4.jfif" style="width:120px;height:120px;"></button>
+                    </div>
+            </div>
+
+          </div>
+
+      </div>
+  
+
+
+  <!-- ========================================= -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+          // variables
+
+        var score = 0;
+        var win = 0;
+        var losses = 0;
+        var button1 = 0;
+        var button2 = 0;
+        var button3 = 0;
+        var button4 = 0;
+        var random1=0;
+        var random2=0;
+        var random3=0;
+        var random4=0;
+        var counter=0;
+        
+
+
+      // the main function
+
+
+         $(document).ready(function() {
+              var target = $("<div>");
+            
+              $("#number-to-guess").append(target);
+
+  
+    
+
+              var targetNumber = "";
+
+              var targetNumber = Math.floor(Math.random() * 101) + 19;
+
+              target.html("This is your target number:" + targetNumber);
+
+              var newDiv = $("<div>");
+               
+              $("#number-to-guess").append(newDiv);   
+
+              newDiv.html("your score:" + score);
+
+              $("#button-1").on("click", function(){
+
+                    button1++;
+
+                    if (button1==1){
+
+                          random1 = Math.floor(Math.random() * 12) + 1;
+              
+                        }
+            
+                    score = score + random1;
+                    newDiv.html("your score:" + score);
+                    if (targetNumber==score){
+                          win++;
+                          targetNumber = Math.floor(Math.random() * 101) + 19;
+                          target.html("This is your target number:" + targetNumber);
+                          var html = "<p> You Won! </p>" + "<p>Wins: " + win + "</p>" +
+                             "<p> Losses: " + losses +"</p>";
+                          document.querySelector('#result').innerHTML=html;
+                          counter++;
+                          score=0;
+                    if (counter>3){
+
+                      if (losses > win){
+                        alert("Game over, You lost!");
+                        document.location.reload(true);
+                      }
+                      else{
+                          alert("Congratulations, You won!");
+                          document.location.reload(true);
+                      }
+                      }
+                
+                      }
+               
+                    else if (targetNumber<score){
+                          losses++
+                          targetNumber = Math.floor(Math.random() * 101) + 19;
+                          target.html("This is your target number:" + targetNumber);
+                          var html = "<p> You Lost! </p>" + "<p>Wins: " + win + "</p>" +
+                              "<p> Losses: " + losses +"</p>";
+                          document.querySelector('#result').innerHTML=html;
+                          counter++;
+                          score=0;
+                    if (counter>3){
+
+                       if (losses > win){
+                        alert("Game over, You lost!");
+                        document.location.reload(true);
+                      }
+                      else{
+                          alert("Congratulations, You won!");
+                          document.location.reload(true);
+                      }
+                      }
+                      }
+                  } );
+
+         
+
+          $("#button-2").on("click", function(){
+
+              button2++;
+
+              if (button2===1){
+
+                  random2 = Math.floor(Math.random() * 12) + 1;
+               
+                }
+            
+
+                score = score + random2;
+                newDiv.html("your score:" + score);
+                if (targetNumber==score){
+                      win++;
+                      targetNumber = Math.floor(Math.random() * 101) + 19;
+                      target.html("This is your target number:" + targetNumber);
+                      var html = "<p> You Won! </p>" + "<p>Wins: " + win + "</p>" +
+                              "<p> Losses: " + losses +"</p>";
+                      document.querySelector('#result').innerHTML=html;
+                      counter++;
+                      score=0;
+                    if (counter>3){
+
+              
+                      if (losses > win){
+                        alert("Game over, You lost!");
+                        document.location.reload(true);
+                      }
+                      else{
+                          alert("Congratulations, You won!");
+                          document.location.reload(true);
+                      }
+                      }
+                
+                   }
+               
+                else if (targetNumber<score){
+                      losses++
+                      targetNumber = Math.floor(Math.random() * 101) + 19;
+                      target.html("This is your target number:" + targetNumber);
+                      var html = "<p> You Lost! </p>" +  "<p>Wins: " + win + "</p>" +
+                              "<p> Losses: " + losses +"</p>";
+                      document.querySelector('#result').innerHTML=html;
+                      counter++;
+                      score=0;
+                    if (counter>3){
+
+                      if (losses > win){
+                        alert("Game over, You lost!");
+                        document.location.reload(true);
+                      }
+                      else{
+                          alert("Congratulations, You won!");
+                          document.location.reload(true);
+                      }
+                      }
+                  }      
+             
+             });
+
+
+
+            $("#button-3").on("click", function(){
+
+                 button3++;
+
+                if (button3===1){
+
+                    random3 = Math.floor(Math.random() * 12) + 1;
+               
+                  }
+            
+
+                score = score + random3;
+                newDiv.html("your score:" + score);
+                if (targetNumber==score){
+                      win++;
+                      targetNumber = Math.floor(Math.random() * 101) + 19;
+                      target.html("This is your target number:" + targetNumber);
+                      var html = "<p> You Won! </p>" + "<p>Wins: " + win + "</p>" +
+                              "<p> Losses: " + losses +"</p>";
+                      document.querySelector('#result').innerHTML=html;
+                      counter++;
+                      score=0;
+                    if (counter>3){
+
+                      
+                      if (losses > win){
+                        alert("Game over, You lost!");
+                        document.location.reload(true);
+                      }
+                      else{
+                          alert("Congratulations, You won!");
+                          document.location.reload(true);
+                      }
+                      }
+                
+                  }
+               
+                else if (targetNumber<score){
+                      losses++
+                      targetNumber = Math.floor(Math.random() * 101) + 19;
+                      target.html("This is your target number:" + targetNumber);
+                      var html = "<p> You Lost! </p>" + "<p>Wins: " + win + "</p>" +
+                              "<p> Losses: " + losses +"</p>";
+                      document.querySelector('#result').innerHTML=html;
+                      counter++;
+                      score=0;
+                    if (counter>3){
+
+                      if (losses > win){
+                        alert("Game over, You lost!");
+                        document.location.reload(true);
+                      }
+                      else{
+                          alert("Congratulations, You won!");
+                          document.location.reload(true);
+                      }
+                      }
+                  }
+                   
+               });
+
+          
+
+          $("#button-4").on("click", function(){
+
+              button4++;
+
+             if (button4===1){
+
+                    random4 = Math.floor(Math.random() * 12) + 1;
+               
+                }
+            
+              score = score + random4;
+              newDiv.html("your score:" + score);
+              if (targetNumber==score){
+                    win++;
+                    targetNumber = Math.floor(Math.random() * 101) + 19;
+                    target.html("This is your target number:" + targetNumber);
+                    var html = "<p> You Won! </p>" + "<p> Wins: " + win + "</p>" +
+                              "<p> Losses: " + losses +"</p>";
+                    document.querySelector('#result').innerHTML=html;
+                    counter++;
+                    score=0;
+                    if (counter>3){
+
+                  
+                      if (losses > win){
+                        alert("Game over, You lost!");
+                        document.location.reload(true);
+                      }
+                      else{
+                          alert("Congratulations, You won!");
+                          document.location.reload(true);
+                        }
+                      }
+                
+                      }
+               
+                else if (targetNumber<score){
+                     losses++
+                     targetNumber = Math.floor(Math.random() * 101) + 19;
+                     target.html("This is your target number:" + targetNumber);
+                     var html = "<p> You Lost! </p>" + "<p>Wins: " + win + "</p>" +
+                              "<p> Losses: " + losses +"</p>";
+                    document.querySelector('#result').innerHTML=html;
+                    counter++;
+                    score=0;
+                    if (counter>3){
+
+                     
+                      if (losses > win){
+                        alert("Game over, You lost!");
+                        document.location.reload(true);
+                      }
+                      else{
+                          alert("Congratulations, You won!");
+                          document.location.reload(true);
+                      }
+                      }
+
+                    }
+
+                });
+                            
+
+    });
+
+
+</script>
+</body>
+</html>
